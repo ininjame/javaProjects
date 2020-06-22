@@ -60,56 +60,12 @@ public class Squarelotron {
         return matrixFlipped;
     }
 
-    public int[][] RightTurn(int turns) {
-        System.out.println("Turning matrix...");
+    public void RightTurn(int turns) {
         int[][] matrixTurned = new int[size][size];
-        int sizeR = size-1;
-        //int ring = 0;
-        if (turns % 4 == 1 || turns % 4 == -3) {
-            for (int ring = 0; ring <= ((size-size%2)/2); ring++) {
-                for (int i = ring; i < (size-ring); i++) {
-
-                    matrixTurned[i][sizeR-ring] = matrix[ring][i]; //turning row 1
-                    matrixTurned[sizeR-ring][sizeR-i] = matrix[i][sizeR-ring]; //turning col n
-                    matrixTurned[sizeR-i][ring] = matrix[sizeR-ring][sizeR-i]; //turning row n
-                    matrixTurned[ring][i] = matrix[sizeR-i][ring]; //turning col 1
-                }
-                //if (ring == 0){
-                //    break;
-                //}
-            }
-        } else if (turns % 4 == 2 || turns % 4 == -2) {
-            for (int ring = 0; ring <= ((size-size%2)/2); ring++) {
-                for (int i = ring; i < (size-ring); i++) {
-                    matrixTurned[ring][i] = matrix[sizeR-ring][sizeR-i]; //turning row n
-                    matrixTurned[i][sizeR-ring] = matrix[sizeR-i][ring]; //turning col 1
-                    matrixTurned[sizeR-ring][sizeR-i] = matrix[ring][i]; //turning row 1
-                    matrixTurned[sizeR-i][ring] = matrix[i][sizeR-ring]; //turning col n
-                }
-            }    
-        } else if (turns % 4 == 3 || turns % 4 == -1) {
-            for (int ring = 0; ring <= ((size-size%2)/2); ring++) {
-                for (int i = ring; i < (size-ring); i++) {
-                    matrixTurned[ring][i] = matrix[i][sizeR-ring]; //turning col n
-                    matrixTurned[i][sizeR-ring] = matrix[sizeR-ring][sizeR-i]; //turning row n
-                    matrixTurned[sizeR-ring][sizeR-i] = matrix[sizeR-i][ring]; //turning col 1
-                    matrixTurned[sizeR-i][ring] = matrix[ring][i]; //turning row 1
-                }
-            }
-        } else {
-            for (int row = 0; row < size; row++) {
-                for (int col = 0; col < size; col++) {
-                    matrixTurned[row][col] = matrix[row][col];
-                }
-            }
-        }
-
-        return matrixTurned;
-          
+        int[1]
     }
-
     public static void main(String[] args) {
-        int size = 4;
+        int size = 5;
 
         Squarelotron testMatrix = new Squarelotron(size);
         for (int row = 0; row < size; row++) {
@@ -120,11 +76,6 @@ public class Squarelotron {
         int[][] flipped = testMatrix.UpDownFlip(2);
         for (int row = 0; row < size; row++) {
             System.out.println(Arrays.toString(flipped[row]));
-        }
-        
-        int[][] turned = testMatrix.RightTurn(3);
-        for (int row = 0; row < size; row++) {
-            System.out.println(Arrays.toString(turned[row]));
-        }
+        }   
     }
 }
